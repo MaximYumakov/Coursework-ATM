@@ -13,6 +13,7 @@ namespace Yumakov.atm
       protected abstract int takeОff(); // Снять деньги
       protected abstract int topUp(); // Пополнить баланс
       protected abstract int transferMoney();// Перевести деньги
+      // добавить срок действия счёта / карты
     }
    class Program
    {
