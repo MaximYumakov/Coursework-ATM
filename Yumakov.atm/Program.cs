@@ -14,6 +14,10 @@ namespace Yumakov.atm
       protected abstract int topUp();
       protected abstract int transferMmoney();
    }
+    class CreditScore : Score
+    {
+
+    }
    class Program
    {
       static void Main(string[] args)
