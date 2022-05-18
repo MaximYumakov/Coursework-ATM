@@ -40,6 +40,8 @@ namespace Yumakov.atm
    {
       static void Main(string[] args)
       {
+            Console.WriteLine("Abdula");
+            Console.ReadKey();
       }
    }
 }
