@@ -17,19 +17,30 @@ namespace Yumakov.atm
    }
     class CreditScore : Score
     {
+        public CreditScore()
+        {
+            score = 0;
+        }
+        public CreditScore(int score)
+        {
+            this.score = score;
+        }
+
         protected override void showScore()
         {
-            throw new NotImplementedException();
+            Console.WriteLine(score);
         }
 
         protected override void takeОff()
         {
-            throw new NotImplementedException();
+            int minusMoney = 50;
+            score -= minusMoney;
         }
 
         protected override void topUp()
         {
-            throw new NotImplementedException();
+            int plusMoney = 50;
+            score += plusMoney;
         }
 
         protected override void transferMoney()
@@ -41,7 +52,8 @@ namespace Yumakov.atm
    {
       static void Main(string[] args)
       {
-            Console.WriteLine("Abdula");
+            CreditScore c1 = new CreditScore(50);
+            
             Console.ReadKey();
       }
    }
