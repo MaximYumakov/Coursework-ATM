@@ -16,9 +16,27 @@ namespace Yumakov.atm
    }
     class CreditScore : Score
     {
+        protected override string showScore()
+        {
+            throw new NotImplementedException();
+        }
 
+        protected override int takeОff()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override int topUp()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override int transferMmoney()
+        {
+            throw new NotImplementedException();
+        }
     }
-   class Program
+    class Program
    {
       static void Main(string[] args)
       {
