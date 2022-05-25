@@ -51,11 +51,15 @@ namespace Yumakov.atm
         public override void takeОff(int minusMoney)
         {
             score -= minusMoney;
+            Console.WriteLine("Снятие прошло успешно");
+            Console.WriteLine("Вы сняли {0} ₽", minusMoney);
         }
 
         public override void topUp(int plusMoney)
         {
             score += plusMoney;
+            Console.WriteLine("Пополнение прошло успешно");
+            Console.WriteLine("Вы пополнили баланс на {0} ₽", plusMoney);
         }
 
         public override void transferMoney()
@@ -67,20 +71,82 @@ namespace Yumakov.atm
             Console.WriteLine("Объект разрушен");
         }
     }
+    class DebetScore : Score
+    {
+        public int score_
+        {
+            get
+            {
+                if (score < 0)
+                {
+                    Console.WriteLine("У вас баланс меньше 0, пожалуйста, пополните счёт");
+                }
+                return score;
+            }
+            set
+            {
+                if (score < 0)
+                {
+                    Console.WriteLine("Пополните баланс. Операция снятия запрещена");
+                }
+            }
+        }
+        public DebetScore()
+        {
+            score = 0;
+        }
+        public DebetScore(int score)
+        {
+            this.score = score;
+        }
+        public override void showScore()
+        {
+            Console.WriteLine("Ваш баланс: {0} ₽", score_);
+        }
+
+        public override void takeОff(int minusMoney)
+        {
+            score -= minusMoney;
+            Console.WriteLine("Снятие прошло успешно");
+            Console.WriteLine("Вы сняли {0} ₽", minusMoney);
+        }
+
+        public override void topUp(int plusMoney)
+        {
+            score += plusMoney;
+            Console.WriteLine("Пополнение прошло успешно");
+            Console.WriteLine("Вы пополнили баланс на {0} ₽", plusMoney);
+        }
+
+        public override void transferMoney()
+        {
+            throw new NotImplementedException();
+        }
+        ~DebetScore()
+        {
+            Console.WriteLine("Объект разрушен");
+        }
+    }
+
     class Program
    {
       static void Main(string[] args)
       {
             Console.OutputEncoding = Encoding.GetEncoding("utf-8");
             Console.Title = "Юмаков Максим - Банкомат";
-            CreditScore cs1 = new CreditScore(10);
-            cs1.takeОff(25);
-            cs1.takeОff(25);
-            cs1.showScore();
+            CreditScore creditCard = new CreditScore(10);
+            creditCard.takeОff(5);
+            creditCard.topUp(25);
+            creditCard.showScore();
             Console.ReadKey();
-            cs1.topUp(100);
-            cs1.showScore();
+            Console.Clear();
+
+            DebetScore debetCard = new DebetScore(15000);
+            debetCard.topUp(10000);
+            debetCard.takeОff(15000);
+            debetCard.showScore();
             Console.ReadKey();
-      }
+
+        }
    }
 }
