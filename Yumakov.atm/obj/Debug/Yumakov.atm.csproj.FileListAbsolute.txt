@@ -1,0 +1,7 @@
+C:\Users\Максим\Desktop\Coursework-OOP\Yumakov.atm\bin\Debug\Yumakov.atm.exe.config
+C:\Users\Максим\Desktop\Coursework-OOP\Yumakov.atm\bin\Debug\Yumakov.atm.exe
+C:\Users\Максим\Desktop\Coursework-OOP\Yumakov.atm\bin\Debug\Yumakov.atm.pdb
+C:\Users\Максим\Desktop\Coursework-OOP\Yumakov.atm\obj\Debug\Yumakov.atm.csproj.AssemblyReference.cache
+C:\Users\Максим\Desktop\Coursework-OOP\Yumakov.atm\obj\Debug\Yumakov.atm.csproj.CoreCompileInputs.cache
+C:\Users\Максим\Desktop\Coursework-OOP\Yumakov.atm\obj\Debug\Yumakov.atm.exe
+C:\Users\Максим\Desktop\Coursework-OOP\Yumakov.atm\obj\Debug\Yumakov.atm.pdb

@@ -9,39 +9,77 @@ namespace Yumakov.atm
    abstract class Score
    {
         protected int score;
-        protected abstract void showScore(); // Посмотреть баланс
-        protected abstract void takeОff(); // Снять деньги
-        protected abstract void topUp(); // Пополнить баланс
-        protected abstract void transferMoney();// Перевести деньги
+        public abstract void showScore(); // Посмотреть баланс
+        public abstract void takeОff(int minusMoney); // Снять деньги
+        public abstract void topUp(int plusMoney); // Пополнить баланс
+        public abstract void transferMoney();// Перевести деньги
       // добавить срок действия счёта / карты
    }
     class CreditScore : Score
     {
-        protected override void showScore()
+        public int score_
+        {
+            get 
+            {
+                if (score < 0)
+                {
+                    Console.WriteLine("У вас баланс меньше 0, пожалуйста, пополните счёт");
+                }
+                return score;
+            }
+            set
+            {
+                if (score < 0)
+                {
+                    Console.WriteLine("Пополните баланс. Операция снятия запрещена");
+                }
+            }
+        }
+        public CreditScore()
+        {
+            score = 0;
+        }
+        public CreditScore(int score)
+        {
+            this.score = score;
+        }
+        public override void showScore()
+        {
+            Console.WriteLine("Ваш баланс: {0} ₽", score_);
+        }
+
+        public override void takeОff(int minusMoney)
+        {
+            score -= minusMoney;
+        }
+
+        public override void topUp(int plusMoney)
+        {
+            score += plusMoney;
+        }
+
+        public override void transferMoney()
         {
             throw new NotImplementedException();
         }
-
-        protected override void takeОff()
+        ~CreditScore()
         {
-            throw new NotImplementedException();
-        }
-
-        protected override void topUp()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override void transferMoney()
-        {
-            throw new NotImplementedException();
+            Console.WriteLine("Объект разрушен");
         }
     }
     class Program
    {
       static void Main(string[] args)
       {
-            Console.WriteLine("Abdula");
+            Console.OutputEncoding = Encoding.GetEncoding("utf-8");
+            Console.Title = "Юмаков Максим - Банкомат";
+            CreditScore cs1 = new CreditScore(10);
+            cs1.takeОff(25);
+            cs1.takeОff(25);
+            cs1.showScore();
+            Console.ReadKey();
+            cs1.topUp(100);
+            cs1.showScore();
             Console.ReadKey();
       }
    }
