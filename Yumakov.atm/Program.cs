@@ -9,14 +9,32 @@ namespace Yumakov.atm
    abstract class Score
    {
         protected int score;
-        protected abstract void showScore(); // Посмотреть баланс
-        protected abstract void takeОff(); // Снять деньги
-        protected abstract void topUp(); // Пополнить баланс
-        protected abstract void transferMoney();// Перевести деньги
+        public abstract void showScore(); // Посмотреть баланс
+        public abstract void takeОff(int minusMoney); // Снять деньги
+        public abstract void topUp(int plusMoney); // Пополнить баланс
+        public abstract void transferMoney();// Перевести деньги
       // добавить срок действия счёта / карты
    }
     class CreditScore : Score
     {
+        public int score_
+        {
+            get 
+            {
+                if (score < 0)
+                {
+                    Console.WriteLine("У вас баланс меньше 0, пожалуйста, пополните счёт");
+                }
+                return score;
+            }
+            set
+            {
+                if (score < 0)
+                {
+                    Console.WriteLine("Пополните баланс. Операция снятия запрещена");
+                }
+            }
+        }
         public CreditScore()
         {
             score = 0;
@@ -25,35 +43,43 @@ namespace Yumakov.atm
         {
             this.score = score;
         }
-
-        protected override void showScore()
+        public override void showScore()
         {
-            Console.WriteLine(score);
+            Console.WriteLine("Ваш баланс: {0} ₽", score_);
         }
 
-        protected override void takeОff()
+        public override void takeОff(int minusMoney)
         {
-            int minusMoney = 50;
             score -= minusMoney;
         }
 
-        protected override void topUp()
+        public override void topUp(int plusMoney)
         {
-            int plusMoney = 50;
             score += plusMoney;
         }
 
-        protected override void transferMoney()
+        public override void transferMoney()
         {
             throw new NotImplementedException();
+        }
+        ~CreditScore()
+        {
+            Console.WriteLine("Объект разрушен");
         }
     }
     class Program
    {
       static void Main(string[] args)
       {
-            CreditScore c1 = new CreditScore(50);
-            
+            Console.OutputEncoding = Encoding.GetEncoding("utf-8");
+            Console.Title = "Юмаков Максим - Банкомат";
+            CreditScore cs1 = new CreditScore(10);
+            cs1.takeОff(25);
+            cs1.takeОff(25);
+            cs1.showScore();
+            Console.ReadKey();
+            cs1.topUp(100);
+            cs1.showScore();
             Console.ReadKey();
       }
    }
