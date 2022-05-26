@@ -127,7 +127,25 @@ namespace Yumakov.atm
             Console.WriteLine("Объект разрушен");
         }
     }
-
+    class GoldScore : DebetScore
+    {
+        public override void showScore()
+        {
+            base.showScore();
+        }
+        public override void takeОff(int minusMoney)
+        {
+            base.takeОff(minusMoney);
+        }
+        public override void topUp(int plusMoney)
+        {
+            base.topUp(plusMoney);
+        }
+        public override void transferMoney()
+        {
+            base.transferMoney();
+        }
+    }
     class Program
    {
       static void Main(string[] args)
