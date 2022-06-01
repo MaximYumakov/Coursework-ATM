@@ -46,6 +46,8 @@ namespace Yumakov.atm
         }
         public override void showScore()
         {
+            Person p1 = new Person("Максим", "Юмаков", "Владиславович");
+            p1.ShowPerson();
             Console.WriteLine("Ваш баланс: {0} ₽", score_);
         }
 
@@ -102,6 +104,8 @@ namespace Yumakov.atm
         }
         public override void showScore()
         {
+            Person p1 = new Person("Максим","Юмаков","Владиславович");
+            p1.ShowPerson();
             Console.WriteLine("Ваш баланс: {0} ₽", score_);
         }
 
@@ -234,20 +238,31 @@ namespace Yumakov.atm
       {
             Console.OutputEncoding = Encoding.GetEncoding("utf-8");
             Console.Title = "Юмаков Максим - Банкомат";
-            CreditScore creditCard = new CreditScore(10);
-            creditCard.takeОff(5);
-            creditCard.topUp(25);
-            creditCard.showScore();
+            //CreditScore creditCard = new CreditScore(10);
+            //creditCard.takeОff(5);
+            //creditCard.topUp(25);
+            //creditCard.showScore();
+            //Console.ReadKey();
+            //Console.Clear();
+            CreditScore cred1 = new CreditScore(100);
+            cred1.showScore();
             Console.ReadKey();
-            Console.Clear();
 
             //DebetScore debetCard = new DebetScore(15000);
             //debetCard.topUp(10000);
             //debetCard.takeОff(15000);
             //debetCard.showScore();
             //Console.ReadKey();
-            Person Maxim = new Person("Юмаков", "Максим", "ВЛадиславович");
-            Maxim.ShowPerson();
+            //Console.Clear();
+
+            //CreditScore creditMax = new CreditScore(25);
+            //creditMax.takeОff(24);
+            //creditMax.topUp(100);
+            //Console.ReadKey();
+            //Console.Clear();
+
+            //Person Maxim = new Person("Юмаков", "Максим", "Владиславович");
+            //Maxim.ShowPerson();
             Console.ReadKey();
 
         }
