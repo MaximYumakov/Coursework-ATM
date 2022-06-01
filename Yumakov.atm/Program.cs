@@ -9,14 +9,19 @@ namespace Yumakov.atm
    abstract class Score
    {
         protected int score;
-        public abstract void showScore(); // Посмотреть баланс
-        public abstract void takeОff(int minusMoney); // Снять деньги
-        public abstract void topUp(int plusMoney); // Пополнить баланс
-        public abstract void transferMoney();// Перевести деньги
+        public abstract void showScore(); 
+        // Посмотреть баланс
+        public abstract void takeОff(int minusMoney); 
+        // Снять деньги
+        public abstract void topUp(int plusMoney); 
+        // Пополнить баланс
+        public abstract void transferMoney();
+        // Перевести деньги
       // добавить срок действия счёта / карты
    }
     class CreditScore : Score
     {
+        Person person = new Person("Юмаков", "Максим", "Владиславович");
         public int score_
         {
             get 
@@ -45,6 +50,8 @@ namespace Yumakov.atm
         }
         public override void showScore()
         {
+            Person p1 = new Person("Максим", "Юмаков", "Владиславович");
+            p1.ShowPerson();
             Console.WriteLine("Ваш баланс: {0} ₽", score_);
         }
 
@@ -101,6 +108,8 @@ namespace Yumakov.atm
         }
         public override void showScore()
         {
+            Person p1 = new Person("Максим","Юмаков","Владиславович");
+            p1.ShowPerson();
             Console.WriteLine("Ваш баланс: {0} ₽", score_);
         }
 
@@ -129,6 +138,14 @@ namespace Yumakov.atm
     }
     class GoldScore : DebetScore
     {
+        public GoldScore()
+        {
+            score = 0;
+        }
+        public GoldScore(int score)
+        {
+            this.score = score;
+        }
         public override void showScore()
         {
             base.showScore();
@@ -145,9 +162,82 @@ namespace Yumakov.atm
         {
             base.transferMoney();
         }
+        ~GoldScore()
+        {
+            Console.WriteLine("Объект разрушен");
+        }
+    }
+    class Person
+    {
+        protected string name, surname, firstname;
+        public string name_
+        {
+            get 
+            {
+                return name;
+            }
+            set
+            {
+                if(name == "")
+                {
+                    Console.WriteLine("Значение не может быть пустым");
+                }
+            }
+        }
+        public string surname_
+        {
+            get
+            {
+                return surname;
+            }
+            set
+            {
+                if (surname == "")
+                {
+                    Console.WriteLine("Значение не может быть пустым");
+                }
+            }
+        }
+        public string firstname_
+        {
+            get
+            {
+                return firstname;
+            }
+            set
+            {
+                if (firstname == "")
+                {
+                    Console.WriteLine("Значение не может быть пустым");
+                }
+            }
+        }
+        public Person()
+        {
+
+        }
+        public Person(string name, string surname, string firstname)
+        {
+            this.name = name;
+            this.surname = surname;
+            this.firstname = firstname;
+        }
+        public void ShowPerson()
+        {
+            Console.WriteLine("Имя: {0}\nФамилия: {1}\nОтчество: {2}\n", name_, surname_, firstname_);
+        }
+        ~Person()
+        {
+            Console.WriteLine("Объект разрушен");
+        }
+        //static public bool operator ==(int ob1, int ob2) /// object
+        //{
+            
+        //}
+
     }
     class Program
-   {
+    {
       static void Main(string[] args)
       {
             Console.OutputEncoding = Encoding.GetEncoding("utf-8");
@@ -164,7 +254,13 @@ namespace Yumakov.atm
             debetCard.takeОff(15000);
             debetCard.showScore();
             Console.ReadKey();
+            Console.Clear();
 
-        }
-   }
+            CreditScore creditMax = new CreditScore(25);
+            creditMax.takeОff(24);
+            creditMax.topUp(100);
+            Console.ReadKey();
+            Console.Clear();
+      }
+    }
 }
