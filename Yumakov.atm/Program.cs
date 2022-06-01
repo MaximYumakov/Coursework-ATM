@@ -9,10 +9,14 @@ namespace Yumakov.atm
    abstract class Score
    {
         protected int score;
-        public abstract void showScore(); // Посмотреть баланс
-        public abstract void takeОff(int minusMoney); // Снять деньги
-        public abstract void topUp(int plusMoney); // Пополнить баланс
-        public abstract void transferMoney();// Перевести деньги
+        public abstract void showScore(); 
+        // Посмотреть баланс
+        public abstract void takeОff(int minusMoney); 
+        // Снять деньги
+        public abstract void topUp(int plusMoney); 
+        // Пополнить баланс
+        public abstract void transferMoney();
+        // Перевести деньги
       // добавить срок действия счёта / карты
    }
     class CreditScore : Score
@@ -233,38 +237,30 @@ namespace Yumakov.atm
 
     }
     class Program
-   {
+    {
       static void Main(string[] args)
       {
             Console.OutputEncoding = Encoding.GetEncoding("utf-8");
             Console.Title = "Юмаков Максим - Банкомат";
-            //CreditScore creditCard = new CreditScore(10);
-            //creditCard.takeОff(5);
-            //creditCard.topUp(25);
-            //creditCard.showScore();
-            //Console.ReadKey();
-            //Console.Clear();
-            CreditScore cred1 = new CreditScore(100);
-            cred1.showScore();
+            CreditScore creditCard = new CreditScore(10);
+            creditCard.takeОff(5);
+            creditCard.topUp(25);
+            creditCard.showScore();
             Console.ReadKey();
+            Console.Clear();
 
-            //DebetScore debetCard = new DebetScore(15000);
-            //debetCard.topUp(10000);
-            //debetCard.takeОff(15000);
-            //debetCard.showScore();
-            //Console.ReadKey();
-            //Console.Clear();
-
-            //CreditScore creditMax = new CreditScore(25);
-            //creditMax.takeОff(24);
-            //creditMax.topUp(100);
-            //Console.ReadKey();
-            //Console.Clear();
-
-            //Person Maxim = new Person("Юмаков", "Максим", "Владиславович");
-            //Maxim.ShowPerson();
+            DebetScore debetCard = new DebetScore(15000);
+            debetCard.topUp(10000);
+            debetCard.takeОff(15000);
+            debetCard.showScore();
             Console.ReadKey();
+            Console.Clear();
 
-        }
-   }
+            CreditScore creditMax = new CreditScore(25);
+            creditMax.takeОff(24);
+            creditMax.topUp(100);
+            Console.ReadKey();
+            Console.Clear();
+      }
+    }
 }
