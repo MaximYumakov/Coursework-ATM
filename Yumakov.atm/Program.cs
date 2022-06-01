@@ -17,6 +17,7 @@ namespace Yumakov.atm
    }
     class CreditScore : Score
     {
+        Person person = new Person("Юмаков", "Максим", "Владиславович");
         public int score_
         {
             get 
@@ -129,6 +130,14 @@ namespace Yumakov.atm
     }
     class GoldScore : DebetScore
     {
+        public GoldScore()
+        {
+            score = 0;
+        }
+        public GoldScore(int score)
+        {
+            this.score = score;
+        }
         public override void showScore()
         {
             base.showScore();
@@ -145,6 +154,79 @@ namespace Yumakov.atm
         {
             base.transferMoney();
         }
+        ~GoldScore()
+        {
+            Console.WriteLine("Объект разрушен");
+        }
+    }
+    class Person
+    {
+        protected string name, surname, firstname;
+        public string name_
+        {
+            get 
+            {
+                return name;
+            }
+            set
+            {
+                if(name == "")
+                {
+                    Console.WriteLine("Значение не может быть пустым");
+                }
+            }
+        }
+        public string surname_
+        {
+            get
+            {
+                return surname;
+            }
+            set
+            {
+                if (surname == "")
+                {
+                    Console.WriteLine("Значение не может быть пустым");
+                }
+            }
+        }
+        public string firstname_
+        {
+            get
+            {
+                return firstname;
+            }
+            set
+            {
+                if (firstname == "")
+                {
+                    Console.WriteLine("Значение не может быть пустым");
+                }
+            }
+        }
+        public Person()
+        {
+
+        }
+        public Person(string name, string surname, string firstname)
+        {
+            this.name = name;
+            this.surname = surname;
+            this.firstname = firstname;
+        }
+        public void ShowPerson()
+        {
+            Console.WriteLine("Имя: {0}\nФамилия: {1}\nОтчество: {2}\n", name_, surname_, firstname_);
+        }
+        ~Person()
+        {
+            Console.WriteLine("Объект разрушен");
+        }
+        //static public bool operator ==(int ob1, int ob2) /// object
+        //{
+            
+        //}
+
     }
     class Program
    {
@@ -159,10 +241,13 @@ namespace Yumakov.atm
             Console.ReadKey();
             Console.Clear();
 
-            DebetScore debetCard = new DebetScore(15000);
-            debetCard.topUp(10000);
-            debetCard.takeОff(15000);
-            debetCard.showScore();
+            //DebetScore debetCard = new DebetScore(15000);
+            //debetCard.topUp(10000);
+            //debetCard.takeОff(15000);
+            //debetCard.showScore();
+            //Console.ReadKey();
+            Person Maxim = new Person("Юмаков", "Максим", "ВЛадиславович");
+            Maxim.ShowPerson();
             Console.ReadKey();
 
         }
