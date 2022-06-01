@@ -21,7 +21,6 @@ namespace Yumakov.atm
    }
     class CreditScore : Score
     {
-        Person person = new Person("Юмаков", "Максим", "Владиславович");
         public int score_
         {
             get 
@@ -261,6 +260,9 @@ namespace Yumakov.atm
             creditMax.topUp(100);
             Console.ReadKey();
             Console.Clear();
+
+            // как проверить оператор в main
+            // сфоткаю
       }
     }
 }
