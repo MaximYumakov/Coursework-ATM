@@ -8,12 +8,12 @@ namespace Yumakov.atm
 {
    abstract class Score
    {
-        protected int score;
+        protected double score;
         public abstract void showScore(); 
         // Посмотреть баланс
-        public abstract void takeОff(int minusMoney); 
+        public abstract void takeОff(double minusMoney); 
         // Снять деньги
-        public abstract void topUp(int plusMoney); 
+        public abstract void topUp(double plusMoney); 
         // Пополнить баланс
         public abstract void transferMoney();
         // Перевести деньги
@@ -29,7 +29,7 @@ namespace Yumakov.atm
                 {
                     Console.WriteLine("У вас баланс меньше 0, пожалуйста, пополните счёт");
                 }
-                return score;
+                return (int)score;
             }
             set
             {
@@ -54,14 +54,14 @@ namespace Yumakov.atm
             Console.WriteLine("Ваш баланс: {0} ₽", score_);
         }
 
-        public override void takeОff(int minusMoney)
+        public override void takeОff(double minusMoney)
         {
             score -= minusMoney;
             Console.WriteLine("Снятие прошло успешно");
             Console.WriteLine("Вы сняли {0} ₽", minusMoney);
         }
 
-        public override void topUp(int plusMoney)
+        public override void topUp(double plusMoney)
         {
             score += plusMoney;
             Console.WriteLine("Пополнение прошло успешно");
@@ -87,7 +87,7 @@ namespace Yumakov.atm
                 {
                     Console.WriteLine("У вас баланс меньше 0, пожалуйста, пополните счёт");
                 }
-                return score;
+                return (int)score;
             }
             set
             {
@@ -112,14 +112,14 @@ namespace Yumakov.atm
             Console.WriteLine("Ваш баланс: {0} ₽", score_);
         }
 
-        public override void takeОff(int minusMoney)
+        public override void takeОff(double minusMoney)
         {
             score -= minusMoney;
             Console.WriteLine("Снятие прошло успешно");
             Console.WriteLine("Вы сняли {0} ₽", minusMoney);
         }
 
-        public override void topUp(int plusMoney)
+        public override void topUp(double plusMoney)
         {
             score += plusMoney;
             Console.WriteLine("Пополнение прошло успешно");
@@ -149,13 +149,25 @@ namespace Yumakov.atm
         {
             base.showScore();
         }
-        public override void takeОff(int minusMoney)
+        public override void takeОff(double minusMoney)
         {
-            base.takeОff(minusMoney);
+            score -= minusMoney;
+            double cashback = score * 0.2;
+            score += cashback; 
+            Console.WriteLine("Снятие прошло успешно");
+            Console.WriteLine("Вы сняли {0} ₽", minusMoney);
+            Console.WriteLine("Ваш кешбек составил: {0} ₽", cashback);
+
         }
-        public override void topUp(int plusMoney)
+        public override void topUp(double plusMoney)
         {
-            base.topUp(plusMoney);
+            score += plusMoney;
+            double cashback = score * 0.1;
+            score += cashback;
+            Console.WriteLine("Пополнение прошло успешно");
+            Console.WriteLine("Вы пополнили баланс на {0} ₽", plusMoney);
+            Console.WriteLine("Ваш кешбек составил: {0} ₽", cashback);
+
         }
         public override void transferMoney()
         {
@@ -223,7 +235,7 @@ namespace Yumakov.atm
         }
         public void ShowPerson()
         {
-            Console.WriteLine("Имя: {0}\nФамилия: {1}\nОтчество: {2}\n", name_, surname_, firstname_);
+            Console.WriteLine("\nВладелец карты\nИмя: {0}\nФамилия: {1}\nОтчество: {2}\n", name_, surname_, firstname_);
         }
         ~Person()
         {
@@ -241,28 +253,32 @@ namespace Yumakov.atm
       {
             Console.OutputEncoding = Encoding.GetEncoding("utf-8");
             Console.Title = "Юмаков Максим - Банкомат";
-            CreditScore creditCard = new CreditScore(10);
-            creditCard.takeОff(5);
-            creditCard.topUp(25);
-            creditCard.showScore();
-            Console.ReadKey();
-            Console.Clear();
+            //CreditScore creditCard = new CreditScore(10);
+            //creditCard.takeОff(5);
+            //creditCard.topUp(25);
+            //creditCard.showScore();
+            //Console.ReadKey();
+            //Console.Clear();
 
-            DebetScore debetCard = new DebetScore(15000);
-            debetCard.topUp(10000);
-            debetCard.takeОff(15000);
-            debetCard.showScore();
-            Console.ReadKey();
-            Console.Clear();
+            //DebetScore debetCard = new DebetScore(15000);
+            //debetCard.topUp(10000);
+            //debetCard.takeОff(15000);
+            //debetCard.showScore();
+            //Console.ReadKey();
+            //Console.Clear();
 
-            CreditScore creditMax = new CreditScore(25);
-            creditMax.takeОff(24);
-            creditMax.topUp(100);
+            //CreditScore creditMax = new CreditScore(25);
+            //creditMax.takeОff(24);
+            //creditMax.topUp(100);
+            //Console.ReadKey();
+            //Console.Clear();
+            GoldScore g1 = new GoldScore(100);
+            g1.topUp(50);
+            g1.showScore();
             Console.ReadKey();
-            Console.Clear();
 
             // как проверить оператор в main
             // сфоткаю
-      }
+        }
     }
 }
