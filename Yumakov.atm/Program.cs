@@ -51,21 +51,27 @@ namespace Yumakov.atm
         {
             Person p1 = new Person("Максим", "Юмаков", "Владиславович");
             p1.ShowPerson();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Ваш баланс: {0} ₽", score_);
+            Console.ResetColor();
         }
 
         public override void takeОff(double minusMoney)
         {
             score -= minusMoney;
             Console.WriteLine("Снятие прошло успешно");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Вы сняли {0} ₽", minusMoney);
+            Console.ResetColor();
         }
 
         public override void topUp(double plusMoney)
         {
             score += plusMoney;
             Console.WriteLine("Пополнение прошло успешно");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Вы пополнили баланс на {0} ₽", plusMoney);
+            Console.ResetColor();
         }
 
         public override void transferMoney()
@@ -109,21 +115,27 @@ namespace Yumakov.atm
         {
             Person p1 = new Person("Максим","Юмаков","Владиславович");
             p1.ShowPerson();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Ваш баланс: {0} ₽", score_);
+            Console.ResetColor();
         }
 
         public override void takeОff(double minusMoney)
         {
             score -= minusMoney;
             Console.WriteLine("Снятие прошло успешно");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Вы сняли {0} ₽", minusMoney);
+            Console.ResetColor();
         }
 
         public override void topUp(double plusMoney)
         {
             score += plusMoney;
             Console.WriteLine("Пополнение прошло успешно");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Вы пополнили баланс на {0} ₽", plusMoney);
+            Console.ResetColor();
         }
 
         public override void transferMoney()
@@ -155,8 +167,10 @@ namespace Yumakov.atm
             double cashback = score * 0.2;
             score += cashback; 
             Console.WriteLine("Снятие прошло успешно");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Вы сняли {0} ₽", minusMoney);
             Console.WriteLine("Ваш кешбек составил: {0} ₽", cashback);
+            Console.ResetColor();
 
         }
         public override void topUp(double plusMoney)
@@ -165,8 +179,12 @@ namespace Yumakov.atm
             double cashback = score * 0.1;
             score += cashback;
             Console.WriteLine("Пополнение прошло успешно");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Вы пополнили баланс на {0} ₽", plusMoney);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Ваш кешбек составил: {0} ₽", cashback);
+            Console.ResetColor();
 
         }
         public override void transferMoney()
@@ -235,7 +253,10 @@ namespace Yumakov.atm
         }
         public void ShowPerson()
         {
-            Console.WriteLine("\nВладелец карты\nИмя: {0}\nФамилия: {1}\nОтчество: {2}\n", name_, surname_, firstname_);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\nВладелец карты:");
+            Console.ResetColor();
+            Console.WriteLine("\nИмя: {0}\nФамилия: {1}\nОтчество: {2}\n", name_, surname_, firstname_);
         }
         ~Person()
         {
