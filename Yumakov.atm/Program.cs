@@ -264,7 +264,40 @@ namespace Yumakov.atm
         }
         //static public bool operator ==(int ob1, int ob2) /// object
         //{
-            
+
+        //}
+        //public static string operator %(Person Object, Person Object2)
+        //{
+
+        //    float percent = 0;
+        //    if (Object.firstname == Object2.firstname)
+        //    {
+        //        percent += 20;
+        //    }
+        //    if (Object.main_name == Object2.main_name)
+        //    {
+        //        percent += 16;
+        //    }
+        //    if (Object.city == Object2.city)
+        //    {
+        //        percent += 16;
+        //    }
+        //    if (Object.izdatelstvo == Object2.izdatelstvo)
+        //    {
+        //        percent += 16;
+        //    }
+        //    if (Object.year == Object2.year)
+        //    {
+        //        percent += 16;
+        //    }
+
+        //    if (Object.pages == Object2.pages)
+        //    {
+        //        percent += 16;
+        //    }
+
+        //    return "Процент схожести двух книг - " + percent.ToString() + '%';
+
         //}
 
     }
@@ -297,6 +330,7 @@ namespace Yumakov.atm
             g1.topUp(50);
             g1.showScore();
             Console.ReadKey();
+
 
             // как проверить оператор в main
             // сфоткаю
