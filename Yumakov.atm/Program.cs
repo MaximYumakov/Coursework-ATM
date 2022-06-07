@@ -46,8 +46,8 @@ namespace Yumakov.atm
         }
         public override void showScore()
         {
-            Person p1 = new Person("Максим", "Юмаков", "Владиславович");
-            p1.ShowPerson();
+            Person MYumakov = new Person("Максим", "Юмаков", "Владиславович");
+            MYumakov.ShowPerson();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Ваш баланс: {0} ₽", score_);
             Console.ResetColor();
@@ -63,7 +63,7 @@ namespace Yumakov.atm
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Вы сняли {0} ₽", minusMoney);
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Ваш баланс: {0} ₽", score);
+            Console.WriteLine("Ваш баланс: {0} ₽", score_);
             Console.ResetColor();
             Console.WriteLine();
         }
@@ -71,7 +71,7 @@ namespace Yumakov.atm
         public override void topUp(double plusMoney)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Ваш баланс до внесения денег: {0} ₽", score);
+            Console.WriteLine("Ваш баланс до внесения денег: {0} ₽", score_);
             Console.ResetColor();
             score += plusMoney;
             Console.WriteLine("Пополнение прошло успешно");
@@ -79,7 +79,7 @@ namespace Yumakov.atm
             Console.WriteLine("Вы пополнили баланс на {0} ₽", plusMoney);
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Ваш баланс: {0} ₽", score);
+            Console.WriteLine("Ваш баланс: {0} ₽", score_);
             Console.ResetColor();
             Console.WriteLine();
         }
@@ -134,8 +134,8 @@ namespace Yumakov.atm
         }
         public override void showScore()
         {
-            Person p1 = new Person("Максим","Юмаков","Владиславович");
-            p1.ShowPerson();
+            Person APavlenko = new Person("Артём","Павленко","Евгеньевич");
+            APavlenko.ShowPerson();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Ваш баланс: {0} ₽", score_);
             Console.ResetColor();
@@ -144,7 +144,7 @@ namespace Yumakov.atm
         public override void takeОff(double minusMoney)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Ваш баланс до снятия денег: {0} ₽", score);
+            Console.WriteLine("Ваш баланс до снятия денег: {0} ₽", score_);
             Console.ResetColor();
             score -= minusMoney;
             Console.WriteLine("Снятие прошло успешно");
@@ -152,7 +152,7 @@ namespace Yumakov.atm
             Console.WriteLine("Вы сняли {0} ₽", minusMoney);
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Ваш баланс: {0} ₽", score);
+            Console.WriteLine("Ваш баланс: {0} ₽", score_);
             Console.ResetColor();
             Console.WriteLine();
         }
@@ -160,7 +160,7 @@ namespace Yumakov.atm
         public override void topUp(double plusMoney)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Ваш баланс до внесения денег: {0} ₽", score);
+            Console.WriteLine("Ваш баланс до внесения денег: {0} ₽", score_);
             Console.ResetColor();
             score += plusMoney;
             Console.WriteLine("Пополнение прошло успешно");
@@ -168,7 +168,7 @@ namespace Yumakov.atm
             Console.WriteLine("Вы пополнили баланс на {0} ₽", plusMoney);
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Ваш баланс: {0} ₽", score);
+            Console.WriteLine("Ваш баланс: {0} ₽", score_);
             Console.ResetColor();
             Console.WriteLine();
         }
@@ -205,12 +205,16 @@ namespace Yumakov.atm
         }
         public override void showScore()
         {
-            base.showScore();
+            Person AShevchenko = new Person("Андрей", "Шевченко", "Михайлович");
+            AShevchenko.ShowPerson();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс: {0} ₽", score_);
+            Console.ResetColor();
         }
         public override void takeОff(double minusMoney)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Ваш баланс до снятия денег: {0} ₽", score);
+            Console.WriteLine("Ваш баланс до снятия денег: {0} ₽", score_);
             Console.ResetColor();
             score -= minusMoney;
             double cashback = score * 0.2;
@@ -221,7 +225,7 @@ namespace Yumakov.atm
             Console.WriteLine("Ваш кешбек составил: {0} ₽", cashback);
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Ваш баланс: {0} ₽", score);
+            Console.WriteLine("Ваш баланс: {0} ₽", score_);
             Console.ResetColor();
             Console.WriteLine();
 
@@ -229,7 +233,7 @@ namespace Yumakov.atm
         public override void topUp(double plusMoney)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Ваш баланс до внесения денег: {0} ₽", score);
+            Console.WriteLine("Ваш баланс до внесения денег: {0} ₽", score_);
             Console.ResetColor();
             score += plusMoney;
             double cashback = score * 0.1;
@@ -242,7 +246,7 @@ namespace Yumakov.atm
             Console.WriteLine("Ваш кешбек составил: {0} ₽", cashback);
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Ваш баланс: {0} ₽", score);
+            Console.WriteLine("Ваш баланс: {0} ₽", score_);
             Console.ResetColor();
             Console.WriteLine();
 
@@ -356,30 +360,33 @@ namespace Yumakov.atm
             Console.ReadKey();
             Console.Clear();
 
-            CreditScore creditMax = new CreditScore(25);
-            creditMax.takeОff(24);
-            creditMax.topUp(100);
-            creditMax.showScore();
-            Console.ReadKey();
-            Console.Clear();
-
             GoldScore g1 = new GoldScore(100);
             g1.topUp(50);
+            g1.takeОff(75);
             g1.showScore();
-
             Console.ReadKey();
+            Console.Clear();
 
             CreditScore g12 = new CreditScore(50);
             CreditScore g21 = new CreditScore(100);
             if (g12 >= g21 == true)
             {
-                Console.WriteLine("Значение верно");
+                Console.WriteLine("Первое значение: {0} ₽\nВторое значение: {1} ₽", g12.score_, g21.score_);
+                Console.WriteLine("Первое значение больше или равно второго");
             }
             else if(g12 <= g21 == true)
             {
-                Console.WriteLine("Значение неверно");
+                Console.WriteLine("Первое значение: {0} ₽\nВторое значение: {1} ₽", g12.score_, g21.score_);
+                Console.WriteLine("Первое значение меньше или равно второго");
             }
             Console.ReadKey();
+            Console.Clear();
+
+            while(true)
+            {
+                GoldScore goldScore = new GoldScore(150);
+                break;
+            }
         }
     }
 }
