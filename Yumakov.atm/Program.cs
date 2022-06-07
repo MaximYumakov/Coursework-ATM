@@ -55,20 +55,33 @@ namespace Yumakov.atm
 
         public override void takeОff(double minusMoney)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс до снятия денег: {0} ₽", score);
+            Console.ResetColor();
             score -= minusMoney;
             Console.WriteLine("Снятие прошло успешно");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Вы сняли {0} ₽", minusMoney);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс: {0} ₽", score);
             Console.ResetColor();
+            Console.WriteLine();
         }
 
         public override void topUp(double plusMoney)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс до внесения денег: {0} ₽", score);
+            Console.ResetColor();
             score += plusMoney;
             Console.WriteLine("Пополнение прошло успешно");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Вы пополнили баланс на {0} ₽", plusMoney);
             Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс: {0} ₽", score);
+            Console.ResetColor();
+            Console.WriteLine();
         }
         public static bool operator <=(CreditScore c1, CreditScore c2)
         {
@@ -130,20 +143,34 @@ namespace Yumakov.atm
 
         public override void takeОff(double minusMoney)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс до снятия денег: {0} ₽", score);
+            Console.ResetColor();
             score -= minusMoney;
             Console.WriteLine("Снятие прошло успешно");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Вы сняли {0} ₽", minusMoney);
             Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс: {0} ₽", score);
+            Console.ResetColor();
+            Console.WriteLine();
         }
 
         public override void topUp(double plusMoney)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс до внесения денег: {0} ₽", score);
+            Console.ResetColor();
             score += plusMoney;
             Console.WriteLine("Пополнение прошло успешно");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Вы пополнили баланс на {0} ₽", plusMoney);
             Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс: {0} ₽", score);
+            Console.ResetColor();
+            Console.WriteLine();
         }
         public static bool operator <=(DebetScore c1, DebetScore c2)
         {
@@ -182,6 +209,9 @@ namespace Yumakov.atm
         }
         public override void takeОff(double minusMoney)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс до снятия денег: {0} ₽", score);
+            Console.ResetColor();
             score -= minusMoney;
             double cashback = score * 0.2;
             score += cashback; 
@@ -190,10 +220,17 @@ namespace Yumakov.atm
             Console.WriteLine("Вы сняли {0} ₽", minusMoney);
             Console.WriteLine("Ваш кешбек составил: {0} ₽", cashback);
             Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс: {0} ₽", score);
+            Console.ResetColor();
+            Console.WriteLine();
 
         }
         public override void topUp(double plusMoney)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс до внесения денег: {0} ₽", score);
+            Console.ResetColor();
             score += plusMoney;
             double cashback = score * 0.1;
             score += cashback;
@@ -204,6 +241,10 @@ namespace Yumakov.atm
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Ваш кешбек составил: {0} ₽", cashback);
             Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс: {0} ₽", score);
+            Console.ResetColor();
+            Console.WriteLine();
 
         }
         public static bool operator <=(GoldScore c1, GoldScore c2)
@@ -285,7 +326,7 @@ namespace Yumakov.atm
         public void ShowPerson()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\nВладелец карты:");
+            Console.WriteLine("Владелец карты:");
             Console.ResetColor();
             Console.WriteLine("\nИмя: {0}\nФамилия: {1}\nОтчество: {2}\n", name_, surname_, firstname_);
         }
