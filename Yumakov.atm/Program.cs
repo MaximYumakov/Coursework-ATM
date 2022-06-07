@@ -15,13 +15,10 @@ namespace Yumakov.atm
         // Снять деньги
         public abstract void topUp(double plusMoney); 
         // Пополнить баланс
-        public abstract void transferMoney();
-        // Перевести деньги
-      // добавить срок действия счёта / карты
    }
     class CreditScore : Score
     {
-        public int score_
+        public double score_
         {
             get 
             {
@@ -73,10 +70,21 @@ namespace Yumakov.atm
             Console.WriteLine("Вы пополнили баланс на {0} ₽", plusMoney);
             Console.ResetColor();
         }
-
-        public override void transferMoney()
+        public static bool operator <=(CreditScore c1, CreditScore c2)
         {
-            throw new NotImplementedException();
+            if (c1.score_ <= c2.score_)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool operator >=(CreditScore c1, CreditScore c2)
+        {
+            if (c1.score_ >= c2.score_)
+            {
+                return true;
+            }
+            return false;
         }
         ~CreditScore()
         {
@@ -85,7 +93,7 @@ namespace Yumakov.atm
     }
     class DebetScore : Score
     {
-        public int score_
+        public double score_
         {
             get
             {
@@ -137,10 +145,21 @@ namespace Yumakov.atm
             Console.WriteLine("Вы пополнили баланс на {0} ₽", plusMoney);
             Console.ResetColor();
         }
-
-        public override void transferMoney()
+        public static bool operator <=(DebetScore c1, DebetScore c2)
         {
-            throw new NotImplementedException();
+            if (c1.score_ <= c2.score_)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool operator >=(DebetScore c1, DebetScore c2)
+        {
+            if (c1.score_ >= c2.score_)
+            {
+                return true;
+            }
+            return false;
         }
         ~DebetScore()
         {
@@ -187,9 +206,21 @@ namespace Yumakov.atm
             Console.ResetColor();
 
         }
-        public override void transferMoney()
+        public static bool operator <=(GoldScore c1, GoldScore c2)
         {
-            base.transferMoney();
+            if (c1.score_ <= c2.score_)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool operator >=(GoldScore c1, GoldScore c2)
+        {
+            if (c1.score_ >= c2.score_)
+            {
+                return true;
+            }
+            return false;
         }
         ~GoldScore()
         {
@@ -258,48 +289,11 @@ namespace Yumakov.atm
             Console.ResetColor();
             Console.WriteLine("\nИмя: {0}\nФамилия: {1}\nОтчество: {2}\n", name_, surname_, firstname_);
         }
+        
         ~Person()
         {
             Console.WriteLine("Объект разрушен");
         }
-        //static public bool operator ==(int ob1, int ob2) /// object
-        //{
-
-        //}
-        //public static string operator %(Person Object, Person Object2)
-        //{
-
-        //    float percent = 0;
-        //    if (Object.firstname == Object2.firstname)
-        //    {
-        //        percent += 20;
-        //    }
-        //    if (Object.main_name == Object2.main_name)
-        //    {
-        //        percent += 16;
-        //    }
-        //    if (Object.city == Object2.city)
-        //    {
-        //        percent += 16;
-        //    }
-        //    if (Object.izdatelstvo == Object2.izdatelstvo)
-        //    {
-        //        percent += 16;
-        //    }
-        //    if (Object.year == Object2.year)
-        //    {
-        //        percent += 16;
-        //    }
-
-        //    if (Object.pages == Object2.pages)
-        //    {
-        //        percent += 16;
-        //    }
-
-        //    return "Процент схожести двух книг - " + percent.ToString() + '%';
-
-        //}
-
     }
     class Program
     {
@@ -307,33 +301,44 @@ namespace Yumakov.atm
       {
             Console.OutputEncoding = Encoding.GetEncoding("utf-8");
             Console.Title = "Юмаков Максим - Банкомат";
-            //CreditScore creditCard = new CreditScore(10);
-            //creditCard.takeОff(5);
-            //creditCard.topUp(25);
-            //creditCard.showScore();
-            //Console.ReadKey();
-            //Console.Clear();
+            CreditScore creditCard = new CreditScore(10);
+            creditCard.takeОff(5);
+            creditCard.topUp(25);
+            creditCard.showScore();
+            Console.ReadKey();
+            Console.Clear();
 
-            //DebetScore debetCard = new DebetScore(15000);
-            //debetCard.topUp(10000);
-            //debetCard.takeОff(15000);
-            //debetCard.showScore();
-            //Console.ReadKey();
-            //Console.Clear();
+            DebetScore debetCard = new DebetScore(15000);
+            debetCard.topUp(10000);
+            debetCard.takeОff(15000);
+            debetCard.showScore();
+            Console.ReadKey();
+            Console.Clear();
 
-            //CreditScore creditMax = new CreditScore(25);
-            //creditMax.takeОff(24);
-            //creditMax.topUp(100);
-            //Console.ReadKey();
-            //Console.Clear();
+            CreditScore creditMax = new CreditScore(25);
+            creditMax.takeОff(24);
+            creditMax.topUp(100);
+            creditMax.showScore();
+            Console.ReadKey();
+            Console.Clear();
+
             GoldScore g1 = new GoldScore(100);
             g1.topUp(50);
             g1.showScore();
+
             Console.ReadKey();
 
-
-            // как проверить оператор в main
-            // сфоткаю
+            CreditScore g12 = new CreditScore(50);
+            CreditScore g21 = new CreditScore(100);
+            if (g12 >= g21 == true)
+            {
+                Console.WriteLine("Значение верно");
+            }
+            else if(g12 <= g21 == true)
+            {
+                Console.WriteLine("Значение неверно");
+            }
+            Console.ReadKey();
         }
     }
 }
