@@ -222,6 +222,7 @@ namespace Yumakov.atm
             Console.WriteLine("Снятие прошло успешно");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Вы сняли {0} ₽", minusMoney);
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Ваш кешбек составил: {0} ₽", cashback);
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Yellow;
