@@ -63,7 +63,7 @@ namespace Yumakov.atm
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Вы сняли {0} ₽", minusMoney);
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Ваш баланс: {0} ₽", score_);
+            Console.WriteLine("Ваш баланс: {0} ₽", score);
             Console.ResetColor();
             Console.WriteLine();
         }
