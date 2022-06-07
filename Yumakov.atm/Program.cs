@@ -385,7 +385,6 @@ namespace Yumakov.atm
             while(true)
             {
                 GoldScore goldScore = new GoldScore(150);
-                break;
             }
         }
     }
