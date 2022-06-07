@@ -361,10 +361,10 @@ namespace Yumakov.atm
             Console.ReadKey();
             Console.Clear();
 
-            GoldScore g1 = new GoldScore(100);
-            g1.topUp(50);
-            g1.takeОff(75);
-            g1.showScore();
+            GoldScore goldCard = new GoldScore(100);
+            goldCard.topUp(50);
+            goldCard.takeОff(75);
+            goldCard.showScore();
             Console.ReadKey();
             Console.Clear();
 
