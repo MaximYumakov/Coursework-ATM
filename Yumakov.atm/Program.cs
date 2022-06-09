@@ -83,6 +83,21 @@ namespace Yumakov.atm
             Console.ResetColor();
             Console.WriteLine();
         }
+        public void loanMoney(double loan)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс до займа: {0} ₽", score_);
+            Console.ResetColor();
+            score += loan;
+            Console.WriteLine("Займ денег прошёл успешно");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Вы заняли {0} ₽", loan);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Ваш баланс: {0} ₽", score_);
+            Console.ResetColor();
+            Console.WriteLine();
+        }
         public static bool operator <=(CreditScore c1, CreditScore c2)
         {
             if (c1.score_ <= c2.score_)
@@ -350,6 +365,7 @@ namespace Yumakov.atm
             CreditScore creditCard = new CreditScore(10);
             creditCard.takeОff(5);
             creditCard.topUp(25);
+            creditCard.loanMoney(100);
             creditCard.showScore();
             Console.ReadKey();
             Console.Clear();
@@ -375,7 +391,7 @@ namespace Yumakov.atm
                 Console.WriteLine("Первое значение: {0} ₽\nВторое значение: {1} ₽", g12.score_, g21.score_);
                 Console.WriteLine("Первое значение больше или равно второго");
             }
-            else if(g12 <= g21 == true)
+            else if (g12 <= g21 == true)
             {
                 Console.WriteLine("Первое значение: {0} ₽\nВторое значение: {1} ₽", g12.score_, g21.score_);
                 Console.WriteLine("Первое значение меньше или равно второго");
@@ -383,7 +399,7 @@ namespace Yumakov.atm
             Console.ReadKey();
             Console.Clear();
 
-            while(true)
+            while (true)
             {
                 GoldScore goldScore = new GoldScore(150);
             }
