@@ -5,13 +5,14 @@ namespace Yumakov.atm
 {
     abstract class Score
     {
+        // баланс
         protected double score;
-        public abstract void showScore();
         // Посмотреть баланс
-        public abstract void takeОff(double minusMoney);
+        public abstract void showScore();
         // Снять деньги
-        public abstract void topUp(double plusMoney);
+        public abstract void takeОff(double minusMoney);
         // Пополнить баланс
+        public abstract void topUp(double plusMoney);
     }
     class CreditScore : Score
     {
@@ -22,6 +23,7 @@ namespace Yumakov.atm
                 if (score < 0)
                 {
                     Console.WriteLine("У вас баланс меньше 0, пожалуйста, пополните счёт");
+                    Console.WriteLine();
                 }
                 return (int)score;
             }
@@ -30,6 +32,7 @@ namespace Yumakov.atm
                 if (score < 0)
                 {
                     Console.WriteLine("Пополните баланс. Операция снятия запрещена");
+                    Console.WriteLine();
                 }
             }
         }
@@ -80,6 +83,7 @@ namespace Yumakov.atm
             Console.ResetColor();
             Console.WriteLine();
         }
+        // занять денег
         public void loanMoney(double loan)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -359,7 +363,7 @@ namespace Yumakov.atm
         {
             Console.OutputEncoding = Encoding.GetEncoding("utf-8");
             Console.Title = "Юмаков Максим - Банкомат";
-            CreditScore creditCard = new CreditScore(10);
+            CreditScore creditCard = new CreditScore(-10);
             creditCard.takeОff(5);
             creditCard.topUp(25);
             creditCard.loanMoney(100);
@@ -368,15 +372,15 @@ namespace Yumakov.atm
             Console.Clear();
 
             DebetScore debetCard = new DebetScore(15000);
-            debetCard.topUp(10000);
             debetCard.takeОff(15000);
+            debetCard.topUp(10000);
             debetCard.showScore();
             Console.ReadKey();
             Console.Clear();
 
             GoldScore goldCard = new GoldScore(100);
-            goldCard.topUp(50);
             goldCard.takeОff(75);
+            goldCard.topUp(50);
             goldCard.showScore();
             Console.ReadKey();
             Console.Clear();
