@@ -1,26 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Yumakov.atm
 {
-   abstract class Score
-   {
+    abstract class Score
+    {
         protected double score;
-        public abstract void showScore(); 
+        public abstract void showScore();
         // Посмотреть баланс
-        public abstract void takeОff(double minusMoney); 
+        public abstract void takeОff(double minusMoney);
         // Снять деньги
-        public abstract void topUp(double plusMoney); 
+        public abstract void topUp(double plusMoney);
         // Пополнить баланс
-   }
+    }
     class CreditScore : Score
     {
         public double score_
         {
-            get 
+            get
             {
                 if (score < 0)
                 {
@@ -149,7 +146,7 @@ namespace Yumakov.atm
         }
         public override void showScore()
         {
-            Person APavlenko = new Person("Артём","Павленко","Евгеньевич");
+            Person APavlenko = new Person("Артём", "Павленко", "Евгеньевич");
             APavlenko.ShowPerson();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Ваш баланс: {0} ₽", score_);
@@ -233,7 +230,7 @@ namespace Yumakov.atm
             Console.ResetColor();
             score -= minusMoney;
             double cashback = score * 0.2;
-            score += cashback; 
+            score += cashback;
             Console.WriteLine("Снятие прошло успешно");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Вы сняли {0} ₽", minusMoney);
@@ -293,13 +290,13 @@ namespace Yumakov.atm
         protected string name, surname, firstname;
         public string name_
         {
-            get 
+            get
             {
                 return name;
             }
             set
             {
-                if(name == "")
+                if (name == "")
                 {
                     Console.WriteLine("Значение не может быть пустым");
                 }
@@ -350,7 +347,7 @@ namespace Yumakov.atm
             Console.ResetColor();
             Console.WriteLine("\nИмя: {0}\nФамилия: {1}\nОтчество: {2}\n", name_, surname_, firstname_);
         }
-        
+
         ~Person()
         {
             Console.WriteLine("Объект разрушен");
@@ -358,8 +355,8 @@ namespace Yumakov.atm
     }
     class Program
     {
-      static void Main(string[] args)
-      {
+        static void Main(string[] args)
+        {
             Console.OutputEncoding = Encoding.GetEncoding("utf-8");
             Console.Title = "Юмаков Максим - Банкомат";
             CreditScore creditCard = new CreditScore(10);
